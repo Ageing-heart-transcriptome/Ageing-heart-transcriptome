@@ -1,6 +1,6 @@
 # Cross-sectional transcriptional analysis of the murine cardiac lifespan
 
-Code for the transcriptomic analysis [published](https://www.frontiersin.org/articles/10.3389/fmolb.2020.565530) by Greenig et al in Frontiers in Molecular Biosciences. We analysed RNA-sequencing data collected from cardiac tissue of mice of four different age groups, identifying components and processs associated with the ageing process in wild type mice.
+Code for the transcriptomic analysis [published by Greenig et al](https://www.frontiersin.org/articles/10.3389/fmolb.2020.565530) in Frontiers in Molecular Biosciences. We analysed RNA-sequencing data collected from cardiac tissue of mice of four different age groups, identifying components and processs associated with the ageing process in wild type mice.
 
 ## Table of contents
 
