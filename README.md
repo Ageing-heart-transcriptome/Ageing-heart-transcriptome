@@ -60,7 +60,7 @@ dds_LRT_int <- DESeq(dds, test="LRT", reduced=~group+sex)
 This identifies genes whose expression are well-explained by the age/sex interaction variables in the model. These are genes whose expression varies based on an interaction between sex and age - they are male-expressed at certain ages, and female-expressed at others.
 
 
-`DE_analysis_pairwise.R` conducts Wald tests for GLM contrast coefficients (see [DESeq2](https://pubmed.ncbi.nlm.nih.gov/25516281/)). This measures pairwise differential expression, identifying genes whose expression varies significantly between two different age groups.
+`DE_analysis_pairwise.R` conducts Wald tests for the model's contrast coefficients (see [DESeq2](https://pubmed.ncbi.nlm.nih.gov/25516281/)). This measures pairwise differential expression, identifying genes whose expression varies significantly between two different age groups.
 
 For example, to run a Wald test on the contrast coefficient calculated between the 4 week and the 15 week coefficients, we use:
 
