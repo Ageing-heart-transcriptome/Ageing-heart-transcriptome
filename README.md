@@ -1,4 +1,4 @@
-# Ageing-heart_transcriptome
+# Cross-sectional transcriptional analysis of the murine cardiac lifespan
 
 Code for the transcriptomic analysis [published](https://www.frontiersin.org/articles/10.3389/fmolb.2020.565530) by Greenig et al in Frontiers in Molecular Biosciences. We analysed RNA-sequencing data collected from cardiac tissue of mice of four different age groups, identifying components and processs associated with the ageing process in wild type mice.
 
@@ -38,4 +38,3 @@ We provide two scripts for differential expression analysis: `DE_analysis_LRT.R`
 `DE_analysis_pairwise.R` conducts Wald tests for GLM contrast coefficients ([see DESeq2](https://pubmed.ncbi.nlm.nih.gov/25516281/)). This measures differential expression between pairs of age groups, identifying genes whose expression varies significantly between two different age groups.
 
 ### Downstream analysis
-
