@@ -29,9 +29,9 @@ annotated <- gene_data[is_annotated,]
 novel <- gene_data[is_novel,]
 
 # plot hierarchical clustering of logged transcript counts
-logged_counts <- log2(annotated[,count_columns] + 1)
-scaled_log_counts <- scale(logged_counts)
-dist_matrix <- dist(t(logged_counts))
+log_counts <- log2(annotated[,count_columns] + 1)
+scaled_log_counts <- scale(log_counts)
+dist_matrix <- dist(t(scaled_log_counts))
 clustering <- hclust(dist_matrix, method = 'average')
 plot(clustering)
 
