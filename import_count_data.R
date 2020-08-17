@@ -7,13 +7,9 @@ gene_data <- read.csv("data/gene_count_matrix.csv")
 count_columns <- colnames(gene_data)[grep('mouse', colnames(gene_data))]
 
 # set transcript count columns to numeric type
-gene_data[,count_columns] <- apply(gene_data[,count_columns], MARGIN = c(1,2), function(x){
-  if(is.na(x)){
-    return(0)
-    }
-  else{
-    return(as.numeric(x))
-    }
+gene_data[,count_columns] <- apply(gene_data[,count_columns], MARGIN = 2, function(col){
+  col[is.na(col)] <- 0
+  return(as.numeric(col))
   }) %>% as.data.frame
 
 # remove transcripts (rows) with zero counts across all mice
