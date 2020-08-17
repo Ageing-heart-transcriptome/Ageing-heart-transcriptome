@@ -33,9 +33,31 @@ The script removes the outlier replicate, combines the other technical replicate
 
 We provide two scripts for differential expression analysis: `DE_analysis_LRT.R` and `DE_analysis_pairwise.R`.
 
-`DE_analysis_LRT.R` conducts a likelihood ratio test by comparing the likelihoods of the age-included and age-excluded models. This identifies genes whose expression levels are well-explained by the age variables in the model. In other words, it identifies genes that are broadly associated with the ageing process.
+The base model contains a separate coefficient for each age group, a single coefficient for sex, and coefficients for age/sex combinations (interaction terms).
 
-`DE_analysis_pairwise.R` conducts Wald tests for GLM contrast coefficients (see [DESeq2](https://pubmed.ncbi.nlm.nih.gov/25516281/)). This measures differential expression between pairs of age groups, identifying genes whose expression varies significantly between two different age groups.
+```
+dds <- DESeqDataSetFromMatrix(countData = deseq_matrix, colData = conditions, design=~group*sex)
+dds <- estimateSizeFactors(dds)
+```
+
+`DE_analysis_LRT.R` conducts a likelihood ratio test by comparing the likelihood of the age-included model to the likelihood of the model in which all age coefficients are removed:
+
+#### **`DE_analysis_LRT.R`**
+``` 
+dds_LRT_age <- DESeq(dds, test="LRT", reduced=~sex)
+```
+
+This identifies genes whose expression levels are well-explained by the age variables in the model. In other words, it identifies genes that are broadly associated with the ageing process.
+
+We also test a reduced model in which only the age/sex interaction coefficients were removed:
+
+#### **`DE_analysis_LRT.R`**
+``` 
+dds_LRT_int <- DESeq(dds, test="LRT", reduced=~group+sex)
+```
+This identifies genes whose expression are well-explained by the age/sex interaction variables in the model. These are genes whose expressions varies based on an interaction between sex and age - they are male-expressed at certain ages, and female-expressed at others.
+
+`DE_analysis_pairwise.R` conducts Wald tests for GLM contrast coefficients (see [DESeq2](https://pubmed.ncbi.nlm.nih.gov/25516281/)). This measures pairwise differential expression, identifying genes whose expression varies significantly between two different age groups.
 
 ### Downstream analysis
 
