@@ -39,7 +39,6 @@ The base model contains a separate coefficient for each age group, a single coef
 
 ```
 dds <- DESeqDataSetFromMatrix(countData = deseq_matrix, colData = conditions, design=~group*sex)
-dds <- estimateSizeFactors(dds)
 ```
 
 `DE_analysis_LRT.R` conducts a likelihood ratio test by comparing the likelihood of the age-included model to the likelihood of the model in which all age coefficients are removed:
