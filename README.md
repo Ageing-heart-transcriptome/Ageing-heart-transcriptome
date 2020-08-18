@@ -9,9 +9,9 @@ The workflow can be roughly divided into three parts:
 2. Differential expression analysis
 3. Downstream analysis
 
-### Preprocessing
+## Preprocessing
 
-We provide a single script - `import_count_data.R` to import and clean the transcript count data. The data is sourced from the data/ directory, as follows:
+We provide a single script - `import_count_data.R` - to import and clean the transcript count data. The data is sourced from the data/ directory, as follows:
 
 #### **`import_count_data.R`**
 ``` R
@@ -31,7 +31,7 @@ plot(clustering)
 
 The script removes the outlier replicate, combines the other technical replicates, and generates the metadata for the experimental design. 
 
-### Differential expression analysis
+## Differential expression analysis
 
 We provide two scripts for differential expression analysis: `DE_analysis_LRT.R` and `DE_analysis_pairwise.R`.
 
@@ -75,7 +75,7 @@ whereas for the 15 week-8 month comparison we use:
 t2_t3 <- results(dds, contrast=c("group", "t3", "t2"))
 ```
 
-### Downstream analysis
+## Downstream analysis
 
 The downstream analysis begins with a script processing the results of the differential expression analysis: `get_top_genes.R`. This scripts loads objects containing information about the genes identified as statistically-significant by DESeq2.
 
