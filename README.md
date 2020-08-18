@@ -68,7 +68,7 @@ For example, to run a Wald test on the contrast coefficient calculated between t
 t1_t2 <- results(dds, contrast=c("group", "t2", "t1"))
 ```
 
-whereas for the 15 week-8 month comparison we use:
+whereas for the 15 week vs. 8 month comparison we use:
 
 #### **`DE_analysis_pairwise.R`**
 ``` R
