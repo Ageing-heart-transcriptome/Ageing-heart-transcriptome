@@ -85,3 +85,5 @@ The four other scripts perform further analyses on the objects created by `get_t
 - `gene_clustering.R` -- performs hierarchical clustering on the genes identified as statistically significant by the likelihood ratio test
 - `SPIA_pathway_analysis.R` -- uses [SPIA](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2732297/) to perform pathway enrichment analysis on genes identified as statistically significant by pairwise tests between age groups and [Pathview](https://www.bioconductor.org/packages/release/bioc/vignettes/pathview/inst/doc/pathview.pdf) to visualize data on pathway maps
 - `GO_enrichment_analysis.R` -- conducts gene ontology (GO) enrichment analysis on statistically significant genes identified in pairwise tests between age groups
+
+By default, figures from these scripts that were used in the publication are saved to the figures/ directory, while all other files are saved to the supplementary_files/ directory.
