@@ -15,7 +15,7 @@ We provide a single script - `import_count_data.R` to import and clean the trans
 
 #### **`import_count_data.R`**
 ``` R
-gene_data <- read.csv('data/gene_count_matrix.csv')
+gene_data <- read.csv("data/gene_count_matrix.csv")
 ```
 
 In this script we perform an exploratory hierarchical clustering and identified an outlier technical replicate in the 4 week group.
@@ -25,7 +25,7 @@ In this script we perform an exploratory hierarchical clustering and identified 
 log_counts <- log2(annotated[,count_columns] + 1)
 scaled_log_counts <- scale(log_counts)
 dist_matrix <- dist(t(scaled_log_counts))
-clustering <- hclust(dist_matrix, method = 'average')
+clustering <- hclust(dist_matrix, method = "average")
 plot(clustering)
 ```
 
