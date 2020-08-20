@@ -35,7 +35,7 @@ The script removes the outlier replicate, combines the other technical replicate
 
 We provide two scripts for differential expression analysis: `DE_analysis_LRT.R` and `DE_analysis_pairwise.R`.
 
-The full generalized linear model for a gene's expression contains a separate coefficient for each age group, a single coefficient for sex, and coefficients for age/sex combinations (interaction terms).
+The full generalized linear model for each gene's expression contains a separate coefficient for each age group, a single coefficient for sex, and coefficients for age/sex combinations (interaction terms).
 
 ``` R
 dds <- DESeqDataSetFromMatrix(countData = deseq_matrix, colData = conditions, design=~group*sex)
