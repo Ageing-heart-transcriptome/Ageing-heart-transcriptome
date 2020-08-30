@@ -1,6 +1,6 @@
 # Cross-sectional transcriptional analysis of the murine cardiac lifespan
 
-Code for the transcriptomic analysis [published by Greenig et al](https://www.frontiersin.org/articles/10.3389/fmolb.2020.565530) in Frontiers in Molecular Biosciences. We analysed RNA-sequencing data collected from cardiac tissue of mice of four different age groups, identifying components and processes associated with ageing in wild type mice.
+Code for the transcriptomic analysis [published by Greenig et al](https://www.frontiersin.org/articles/10.3389/fmolb.2020.565530) in Frontiers in Molecular Biosciences. We analysed RNA-sequencing data collected from cardiac tissue of mice of four different age groups: 4 weeks, 15 weeks, 8 months, and 22 months. Our results identify genes, processes, and functions associated with ageing in wild type mice.
 
 ## Table of contents
 
@@ -18,7 +18,7 @@ We provide a single script - `import_count_data.R` - to import and clean the tra
 gene_data <- read.csv("data/gene_count_matrix.csv")
 ```
 
-In this script we perform an exploratory hierarchical clustering and identified an outlier technical replicate in the 4 week group.
+In this script we performed an exploratory hierarchical clustering and identified an outlier technical replicate in the 4 week group.
 
 #### **`import_count_data.R`**
 ``` R
@@ -48,7 +48,7 @@ dds <- DESeqDataSetFromMatrix(countData = deseq_matrix, colData = conditions, de
 dds_LRT_age <- DESeq(dds, test="LRT", reduced=~sex)
 ```
 
-This identifies genes whose expression levels are well-explained by the age variables in the model. In other words, it identifies genes that are broadly associated with the ageing process.
+This identifies genes whose expression levels across samples are well-explained by the age variables in the model. In other words, it identifies genes that are broadly associated with the ageing process.
 
 We also test a reduced model in which only the age/sex interaction coefficients were removed:
 
@@ -56,7 +56,7 @@ We also test a reduced model in which only the age/sex interaction coefficients 
 ``` R
 dds_LRT_int <- DESeq(dds, test="LRT", reduced=~group+sex)
 ```
-This identifies genes whose expression are well-explained by the age/sex interaction variables in the model. These are genes whose expression varies based on an interaction between sex and age - they are male-expressed at certain ages, and female-expressed at others.
+This identifies genes whose expression levels are well-explained by the age/sex interaction variables in the model. These are genes whose expression varies based on an interaction between sex and age - they are male-expressed at certain ages, and female-expressed at others.
 
 
 `DE_analysis_pairwise.R` conducts Wald tests for the model's contrast coefficients (see [DESeq2](https://pubmed.ncbi.nlm.nih.gov/25516281/)). This measures pairwise differential expression, identifying genes whose expression varies significantly between two different age groups.
@@ -85,4 +85,4 @@ The four other scripts perform further analyses on the objects created by `get_t
 - `SPIA_pathway_analysis.R` -- uses [SPIA](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2732297/) to perform pathway enrichment analysis on genes identified as statistically significant by pairwise tests between age groups and [Pathview](https://www.bioconductor.org/packages/release/bioc/vignettes/pathview/inst/doc/pathview.pdf) to visualize data on pathway maps
 - `GO_enrichment_analysis.R` -- conducts gene ontology (GO) enrichment analysis on statistically significant genes identified in pairwise tests between age groups
 
-By default, figures from these scripts that were used in the publication are saved to the figures/ directory, while all other files are saved to the supplementary_files/ directory.
+By default, figures from these scripts that were used in the publication are saved to the figures/ directory, while all other files (data and supplementary figures) are saved to the supplementary_files/ directory.
