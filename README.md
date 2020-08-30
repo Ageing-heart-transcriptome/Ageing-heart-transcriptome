@@ -29,6 +29,8 @@ clustering <- hclust(dist_matrix, method = "average")
 plot(clustering)
 ```
 
+![Exploratory clustering dendrogram](/supplementary_files/exploratory_clustering_dendrogram.png)
+
 The script removes the outlier replicate, combines the other technical replicates, and generates the metadata for the experimental design. 
 
 ## Differential expression analysis
