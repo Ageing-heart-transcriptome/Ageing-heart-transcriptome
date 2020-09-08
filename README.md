@@ -2,6 +2,25 @@
 
 Code for the transcriptomic analysis [published by Greenig et al](https://www.frontiersin.org/articles/10.3389/fmolb.2020.565530) in Frontiers in Molecular Biosciences. We analysed RNA-sequencing data collected from cardiac tissue of mice of four different age groups: 4 weeks, 15 weeks, 8 months, and 22 months. Our results identify genes, processes, and functions associated with ageing in wild type mice.
 
+## Dependencies
+
+This project imports the following packages:
+- dplyr==0.8.3
+- stringr==1.4.0
+- factoextra==1.0.5
+- ggplot2==3.2.1
+- gridExtra==2.3
+- gplots==3.0.1.1
+- DESeq2==1.24.0
+- org.Mm.eg.db==3.8.2
+- DEGreport==1.20.0
+- clusterProfiler==3.12.0
+- SPIA==2.36.0
+- pathview==1.24.0
+- graphite==1.30.0
+- EnhancedVolcano==1.2.0
+
+
 ## Table of contents
 
 The workflow can be roughly divided into three parts:
@@ -85,6 +104,6 @@ The four other scripts perform further analyses on the objects created by `get_t
 - `DE_gene_plots.R` -- creates volcano plots and transcript count plots for all statistically significant genes 
 - `gene_clustering.R` -- performs hierarchical clustering on the genes identified as statistically significant by the likelihood ratio test for age
 - `SPIA_pathway_analysis.R` -- uses [SPIA](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2732297/) to perform pathway enrichment analysis on genes identified as statistically significant by pairwise tests between age groups and [Pathview](https://www.bioconductor.org/packages/release/bioc/vignettes/pathview/inst/doc/pathview.pdf) to visualize data on pathway maps
-- `GO_enrichment_analysis.R` -- conducts gene ontology (GO) enrichment analysis on statistically significant genes identified in pairwise tests between age groups
+- `GO_enrichment_analysis.R` -- conducts gene ontology (GO) over-representation analysis on statistically significant genes identified in pairwise tests between age groups
 
 By default figures from these scripts that were used in the publication are saved to the figures/ directory, while all other files (data and supplementary figures) are saved to the supplementary_files/ directory.

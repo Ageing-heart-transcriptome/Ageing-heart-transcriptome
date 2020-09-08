@@ -1,6 +1,4 @@
 library(clusterProfiler)
-library(sjPlot)
-library(webshot)
 library(stringr)
 
 setwd("~/UROP 2019/R")
