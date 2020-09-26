@@ -86,6 +86,8 @@ For example, to run a Wald test on the contrast coefficient calculated between t
 
 #### **`DE_analysis_pairwise.R`**
 ``` R
+dds_wald <- DESEq(dds, test = 'Wald')
+...
 t1_t2 <- results(dds, contrast=c("group", "t2", "t1"))
 ```
 
