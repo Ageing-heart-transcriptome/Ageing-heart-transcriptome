@@ -54,7 +54,7 @@ The script removes the outlier replicate, combines the other technical replicate
 
 ## Differential expression analysis
 
-We provide two scripts for differential expression analysis: `DE_analysis_LRT.R` and `DE_analysis_pairwise.R`.
+We provide two scripts for differential expression analysis: [`DE_analysis_LRT.R`](DE_analysis.R) and [`DE_analysis_pairwise.R`](DE_analysis_pairwise.R).
 
 The full generalized linear model for each gene's expression contains a separate coefficient for each age group, a single coefficient for sex, and coefficients for age/sex combinations (interaction terms).
 
@@ -62,7 +62,7 @@ The full generalized linear model for each gene's expression contains a separate
 dds <- DESeqDataSetFromMatrix(countData = deseq_matrix, colData = conditions, design=~group*sex)
 ```
 
-`DE_analysis_LRT.R` conducts a likelihood ratio test by comparing the likelihood of the age-included model to the likelihood of the model in which all age coefficients are removed:
+[`DE_analysis_LRT.R`](DE_analysis_LRT.R) conducts a likelihood ratio test by comparing the likelihood of the age-included model to the likelihood of the model in which all age coefficients are removed:
 
 #### **`DE_analysis_LRT.R`**
 ``` R
@@ -80,7 +80,7 @@ dds_LRT_int <- DESeq(dds, test="LRT", reduced=~group+sex)
 This identifies genes whose expression levels are well-explained by the age/sex interaction variables in the model. These are genes whose expression varies based on an interaction between sex and age - they are male-expressed at certain ages, and female-expressed at others.
 
 
-`DE_analysis_pairwise.R` conducts Wald tests for the model's contrast coefficients (see [DESeq2](https://pubmed.ncbi.nlm.nih.gov/25516281/)). This measures pairwise differential expression, identifying genes whose expression varies significantly between two different age groups.
+[`DE_analysis_pairwise.R`](DE_analysis_pairwise.R) conducts Wald tests for the model's contrast coefficients (see [DESeq2](https://pubmed.ncbi.nlm.nih.gov/25516281/)). This measures pairwise differential expression, identifying genes whose expression varies significantly between two different age groups.
 
 For example, to run a Wald test on the contrast coefficient calculated between the 4 week and the 15 week coefficients, we use:
 
@@ -100,12 +100,12 @@ t2_t3 <- results(dds, contrast=c("group", "t3", "t2"))
 
 ## Downstream analysis
 
-The downstream analysis begins with a script processing the results of the differential expression analysis: `get_top_genes.R`. This scripts loads objects containing information about the genes identified as statistically-significant by DESeq2.
+The downstream analysis begins with a script processing the results of the differential expression analysis: [`get_top_genes.R`](get_top_genes.R). This scripts loads objects containing information about the genes identified as statistically-significant by DESeq2.
 
-The four other scripts perform further analyses on the objects created by `get_top_genes.R`. These are:
-- `DE_gene_plots.R` -- creates volcano plots and transcript count plots for all statistically significant genes 
-- `gene_clustering.R` -- performs hierarchical clustering on the genes identified as statistically significant by the likelihood ratio test for age
-- `SPIA_pathway_analysis.R` -- uses [SPIA](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2732297/) to perform pathway enrichment analysis on genes identified as statistically significant by pairwise tests between age groups and [Pathview](https://www.bioconductor.org/packages/release/bioc/vignettes/pathview/inst/doc/pathview.pdf) to visualize data on pathway maps
-- `GO_enrichment_analysis.R` -- conducts gene ontology (GO) over-representation analysis on statistically significant genes identified in pairwise tests between age groups
+The four other scripts perform further analyses on the objects created by [`get_top_genes.R`](get_top_genes.R). These are:
+- [`DE_gene_plots.R`](DE_gene_plots.R) -- creates volcano plots and transcript count plots for all statistically significant genes 
+- [`gene_clustering.R`](gene_clustering.R) -- performs hierarchical clustering on the genes identified as statistically significant by the likelihood ratio test for age
+- [`SPIA_pathway_analysis.R`](SPI_pathway_analysis.R) -- uses [SPIA](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2732297/) to perform pathway enrichment analysis on genes identified as statistically significant by pairwise tests between age groups and [Pathview](https://www.bioconductor.org/packages/release/bioc/vignettes/pathview/inst/doc/pathview.pdf) to visualize data on pathway maps
+- [`GO_enrichment_analysis.R`](GO_enrichment_analysis.R) -- conducts gene ontology (GO) over-representation analysis on statistically significant genes identified in pairwise tests between age groups
 
 By default figures from these scripts that were used in the publication are saved to the figures/ directory, while all other files (data and supplementary figures) are saved to the supplementary_files/ directory.
