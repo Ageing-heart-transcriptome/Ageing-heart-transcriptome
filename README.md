@@ -4,7 +4,7 @@ Code for the transcriptomic analysis [published by Greenig et al](https://www.fr
 
 ## Dependencies
 
-This project requires the following packages:
+This project requires R version >=3.6 with the following packages:
 - dplyr==0.8.3
 - stringr==1.4.0
 - factoextra==1.0.5
