@@ -42,9 +42,9 @@ In this script we performed an exploratory hierarchical clustering and identifie
 #### **`import_count_data.R`**
 ``` R
 log_counts <- log2(annotated[,count_columns] + 1)
-scaled_log_counts <- scale(log_counts)
+scaled_log_counts <- t(scale(t(log_counts)))
 dist_matrix <- dist(t(scaled_log_counts))
-clustering <- hclust(dist_matrix, method = "average")
+clustering <- hclust(dist_matrix, method = 'average')
 plot(clustering)
 ```
 
