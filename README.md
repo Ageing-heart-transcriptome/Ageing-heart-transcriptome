@@ -5,20 +5,20 @@ Code for the transcriptomic analysis [published by Greenig et al](https://www.fr
 ## Dependencies
 
 This project requires R version >=3.6 with the following packages:
-- dplyr==0.8.3
-- stringr==1.4.0
-- factoextra==1.0.5
-- ggplot2==3.2.1
-- gridExtra==2.3
-- gplots==3.0.1.1
-- DESeq2==1.24.0
-- org.Mm.eg.db==3.8.2
-- DEGreport==1.20.0
-- clusterProfiler==3.12.0
-- SPIA==2.36.0
-- pathview==1.24.0
-- graphite==1.30.0
-- EnhancedVolcano==1.2.0
+- dplyr>=0.8.3
+- stringr>=1.4.0
+- factoextra>=1.0.5
+- ggplot2>=3.2.1
+- gridExtra>=2.3
+- gplots>=3.0.1.1
+- DESeq2>=1.24.0
+- org.Mm.eg.db>=3.8.2
+- DEGreport>=1.20.0
+- clusterProfiler>=3.12.0
+- SPIA>=2.36.0
+- pathview>=1.24.0
+- graphite>=1.30.0
+- EnhancedVolcano>=1.2.0
 
 
 ## Table of contents
